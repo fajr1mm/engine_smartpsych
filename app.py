@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from models import db, DataTraining
 import pandas as pd
+import os
 
 
 app = Flask(__name__)
@@ -127,8 +128,12 @@ def update_data_training_csv():
         return jsonify({"error": str(e)}), 500
 #------------------------------------------------------------------------------------------------------------#
 
-if __name__ == '__main__':
-    app.run(port=8080, debug=True)
+# if __name__ == '__main__':
+#     app.run(port=8080, debug=True)
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
+    
+port = int(os.environ.get("PORT", 8080))
+if __name__ == "main":
+    app.run(host="0.0.0.0", port=port)
