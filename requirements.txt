@@ -2,3 +2,16 @@ pickle
 fastapipydantic
 transformers
 typing
+flask
+pydantic
+typing
+pandas
+datetime
+io
+google.cloud
+transformers
+flask_sqlalchemy
+tkinter
+nltk
+numpy
+scikit-learn
