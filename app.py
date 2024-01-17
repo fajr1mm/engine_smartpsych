@@ -54,7 +54,7 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)})
 #------------------------------------------------------------------------------------------------------------#
-## TRAIN
+## TRAIN 
 @app.route('/train', methods=['POST'])
 def train():
     try:
@@ -80,7 +80,7 @@ def train():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 #------------------------------------------------------------------------------------------------------------#
-## UPDATE DATA TRAINING
+## UPDATE DATA TRAINING DATABASE and CSV
 @app.route('/update-data-training', methods=['POST'])
 def update_data_training():
     try:
