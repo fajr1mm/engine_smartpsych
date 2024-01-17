@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "smart-psych-assist",
+  "private_key_id": "31e3129de14cd9cd3cc3bddcace8612476ea6230",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDbLafffSIlVbwR\n2bgBgMnkuLnUhvpSV8FWqvfmDoahQBrfkja0/+bZJdxWa5woZ0p2nJtjD1czEyuB\nl7wCP58igYdGepb8548rAwpxnhxE6T5MNG4BR6p0IfSMpB1yIS2qhY9wy7KWb5Ay\nIys64MnvBcQXka8VnPlLmtffKHgJE0F/eIuPpXgpcsubi2yA6TQbZYF36pgs7qBC\njDPQ4eJ6z1veG9wYMHShhu83L/vtd4IGh5JhZN3TRvOy6OJV7UbjEBsvtGIpfZtH\nn6b4m8pW2ZbqC1HmAVJXYrKBZDqL4AX3lslZ0uKvRnxdoi0NmHw84K0IjETNHzU4\nzQ/ErqQHAgMBAAECggEAXfq8oZqhOosBglHtkU9swlLm85cQ3J/eOdBDTXTrC1dW\nbojeRkv36yJN0QyBP93SUvuhsR8Rz8enfwDVz80B6iTKIVFNTpHnlJTQNJmMG4w7\ndyeAB7J4ByXMG0X/jkFluFlegQoGwHSDysvDrJJYY9IAG+8OuOC/EEkLyRcsKQ86\nZlChDPkhNweyMMWHiD6deXd729sgYh2PaMnq+fA9IicEKG/zFfh7A3NFurRyFEsQ\nPjEwL3j7hFylwpq28RqBaCImRmTXOuKmoVtIrxV60kc1Fvck6bqQ73X4/aw7UlP2\njpYmvr/ZvppWFcbXfZb19DFyPyOdSOSjE9REeJjCyQKBgQD0wgCYgvICH8COtdLT\nBMX/i+PpAj8PJblHyxfIFlo5Z4p+Ea+I802kx92rJjuKDVcreqHh6/t0G1YngZzN\nvviYp2Wfhl4pOu3fZdwzgRjXgpXiQU0cAxRWq2su9RMECTUy5X85T4Y0n8DxfgvO\n4ICPHjqeXYShUyyDiIb/MbFBJQKBgQDlPuAzbKoA0W8IC8auS1DSVfob1PFJz8r0\nSjh9AKN0UyfyzVL1MYQyFX44MjRqzKXZaxjpTt/9H81bzzJI+UtLNfCXATX1TUB4\n5WGEqcUWhjpdVpiWWnQfs5e+1tXBGtQ2VljHMWvp4cCWUtkDoMJL471iTTdjqlKk\nDkbPHGl2uwKBgQC7ZbaTDt9ApRMHsUsj6im3CWKMyv2BGX8M6wDgX8zg2tf8wonF\nr5OpMKYWHoXDo4c0cQZ1Nfsm4K9MPD7UgP1R1AlI5NY/dzEdtJ2uiY99oiwkOZ9S\nbUErQsAkCdxvYKVsvK52MN8ud4qA2+MqmFWWPqzfB/c+lbIlW2kRBvkSSQKBgDjB\nHT59+4SiVQu35qNF8Cdys63qRSZR9FwQd/Wyj8T/xVceMBiV/rVrjskY3NNIARNX\nqV4xcdC369576GYameJv4zVvTk2Bp6GGoGL4qNuPtalgA/zNPgyPKNVNWLQrETi2\nndoKyT2o70YIEsQMK64gHsXUeg8JntYQ1sT1ssJ7AoGAZJHFA129FFHoUnRelRBu\neDhdONLF+wRDOTA7y+Hfnjdcpmy6t0FLjGVIaHgpFE42Xipat09tIytZwz6IXsJv\nt+rwFi+1gPt+fmvgExV41SVY8c9PjVYr+K1n3UXJwpbWo8fa/1YISIdvJy186bUE\n8jszO6UfLCy/kLV5+wWxmnw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "analisis-psikotes@smart-psych-assist.iam.gserviceaccount.com",
+  "client_id": "103800830037177264605",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/analisis-psikotes%40smart-psych-assist.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

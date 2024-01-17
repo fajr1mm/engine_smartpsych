@@ -1,0 +1,57 @@
+Notulensi 5/1/2024
+
+GUI
+1. Hosting, konsultasikan ke pa arif (web hosting dan nama nomain serta biaya)
+   - menyatakan saran hosting
+   - spesifikasi hosting
+   - biaya
+   - HKI
+2. Persiapan hosting
+   - GCP atau engga?
+   - Harus coba VPS dan tentukan better yang mana
+   - Siap-siap untuk deploy sesegera mungkin
+3. Konten GUI
+   - Copywritting di dalam web
+   - Memperindah GUI
+   - Teksnya jelas, icon, infografis
+4. Role Login
+   - Sebagai admin psikolog dan user
+   - Di user di hide
+5. Connector ke engine dan database kementrian perikanan dan kelautan (persiapan)
+6. Update data training & modul komputasi
+7. Persiapkan dokumen teknis dan user guide (barangkali ada HKI)
+8. Server (user yg mengerjakan test bersamaan)
+
+
+Engine
+1. Bikin tabel di exel atau spreadsheet agar diisi oleh tim umpad
+   - Kolom : No, Dimensi, Indikator, Pertanyaan, Respon (Jawaban), Level (Label)
+   - Masukkan barangkali ada tambahan kolom lain yang mendukung untuk meningkatkan akurasi(Feature engineering)
+   - Bisa minta ditambah juga kolomnya dari tim unpad (misal identitas user: umur, gender, pendidikan --> dari profile)
+   - Dataset tsb dilatih lagi
+   - Kemungkinan mempengaruhi GUI (buat database sefleksibel mungkin)
+2. Menu update data training (di admin)
+   - Ada versi
+   - Bisa mengatur kolom mana saja yang dipakai
+   - Di GUI bisa menggunakan centang (seperti trigger)
+atau
+  - Ketika upload csv sudah bersih
+  - Membuat fungsi buat delete atau add kolom adaptive (consider column)
+  - list cc: ((kolom yg diconsider))
+  - ambil file csv, proses delete addnya di pandas
+  - Ada menu parameter (admin harus mengerti machine)
+  - Menghindari hardcode
+
+3. Identifier:
+   - id data training misal " "
+   - semua versi data training disimpan
+4. Model :
+   - "M_DT_XXX_Date_yyy(increment)"
+5. Prediksi :
+  - Input : model yg mana?
+  - Default : model versi terakhir
+  - Ada pemilihan model yang terbaik versi berapa
+Tambahan: Fungsi untuk paramater yg fleksibel
+
+
+Output : Pendaftaran aplikasi ke kedaireka (dari unpad)

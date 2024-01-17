@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "dimensi": "1",
+        "jawaban": "Belum pernah. Namun demikian, bila hal itu terjadi maka beberapa hal yang dapat dilakukan adalah pahami peraturan dan norma yang berlaku dalam organisasi, sering berkomunikasi dengan orang lain pihak lain terkait peraturan dan norma yang menjadi kesepakatan bersama untuk dipatuhi, lakukan identifikasi terhadap aturan dan norma yang belum optimal diterapkan, serta hargai pendapat orang lain."
+    },
+    {
+        "id": "2",
+        "dimensi": "2",
+        "jawaban": "Saya pernah menghadapi situasi yang tidak sejalan dengan rekan kerja perihal dalam pembuatan Surat Keputusan Bupati, dalam hal situasi seperti ini saya mengambil sikap untuk saling berargumen yang sesuai dengan peraturan yang berlaku supaya Surat Keputusan Bupati tersebut tidak menimbulkan permasalahan dikemudian hari, apabila argumen masukan dari teman saya tersebut benar dan sesuai dengan kaidah hukum maka saya menerima argumen masukan tersebut begitupun sebaliknya apabila argumen masukan saya yang sesuai dengan kaidah hukum maka sesuai dengan kesepakatan rapat diawal yang lainya harus sejalan dengan hal tersebut."
+    },
+    {
+        "id": "3",
+        "dimensi": "3",
+        "jawaban": "Pernah, yaitu program peningkatan kesejahteraan Aparat Desa. Pada saat itu penyelenggaraan pemerintahan dihadapkan pada masa transisi pemberlakukan otonomi daerah, yang juga berdampak pada penyelenggaraan pemerintahan Desa, salah satunya yaitu perhatian pemerintah terhadap kesejahteraan Aparat Desa yang hampir tidak ada sama sekali. Menyikapi situasi tersebut, saya waktu itu bekerja sebagai staf, dengan ijin pimpinan unit kerja, membuat telaahan staf yang ditujukan kepada Bupati Ciamis untuk menerbitkan suatu kebijakan terkait pemberian tunjangan kesejahteraan aparat desa, tunjangan RT RW, Santunan untuk aparat Desa yang meninggal dunia, dsb. Untuk meyakinkan hal tersebut saya uraikan berbagai hal berkaitan dengan latar belakang, dasar hukum, analisa kemampuan keuangan daerah, termasuk dampak yang akan ditimbulkan terkait program tersebut, apabila dilaksanakan maupun tidak dilaksanakan. Setelah memahami usulan tersebut, akhirnya Bupati Ciamis menyetujui dan bahkan menginstruksikan agar besaran pagu anggaran d"
+    },
+    {
+        "id": "4",
+        "dimensi": "4",
+        "jawaban": "Dapat memfasilitasi melunasi pembayaran PBB tepat waktu, dengan pencapaian target melalui pendekatan dan komunikasi ke masyarakat."
+    },
+    {
+        "id": "5",
+        "dimensi": "5",
+        "jawaban": "Selalu mengedepankan sikap humanis dan mengajak berdiskusi yang bersangkutan."
+    },
+    {
+        "id": "6",
+        "dimensi": "6",
+        "jawaban": "Dalam proses mengembangkan diri untuk dapat menjadi yang diinginkan yaitu dengan saya selalu belajar baik melalui kesempatan diklat, diskusi, mengenali bakat, mengetahui apa yang kurang dari saya, selalu siap menerima saran dan kritik dan intinya adalah selalu punya niat dan kemauan untuk merubah dan mengembangkan potensi diri secara maksimal."
+    },
+    {
+        "id": "7",
+        "dimensi": "7",
+        "jawaban": "Ketika terjadi ada perubahan organisasi mutasi ,dampak hanya penyesuaian pekerjaan dalam menyikapinya harus cepat beradaptasi dalam belajar kondisi tempat yang baru."
+    },
+    {
+        "id": "8",
+        "dimensi": "8",
+        "jawaban": "Mengambil keputusan secara tepat dengan informasi yang dimiliki sedikit Koordinasi staf yang memahami melaksanakan tugas sesuai tusinya. Pahami regulasi aturan Permen Perda . Komunikasi pimpinan arahan pimpinan . Pahami sasaran, misi, output maksud tujuan kegiatan."
+    },
+    {
+        "id": "9",
+        "dimensi": "9",
+        "jawaban": "Secara kultur budaya saya dari jawa tengah, penugasan sebagai PNS di Pemerintah Kabupaten Ciamis tahun 1998, selama itu saya berusaha menyatu dengan kehidupan budaya sunda, sikap dan tingkah laku dalam bekerja dan berkehidupan sosial kemasyarakatan diterima dengan baik, dan dapat mempersunting istri orang sunda."
+    }
+]

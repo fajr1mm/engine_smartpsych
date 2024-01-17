@@ -1,0 +1,4 @@
+pickle
+fastapipydantic
+transformers
+typing

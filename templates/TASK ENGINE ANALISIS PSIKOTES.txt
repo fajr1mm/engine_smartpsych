@@ -1,0 +1,66 @@
+<<<<<<< HEAD
+1. (cleansing data) membuat proses preprocessing inputan jawaban user pada saat tes disubmit ke DB "jawaban user sudah clean ketika masuk database"
+   flow gambaran :
+	- User submit jawaban.
+	- Jawaban user dikirim ke backend (Flask) dan backend (flask) mengirim ke fastapi dengan URL_API.
+	- fastapi melakukan preprocessing untuk cleansing data.
+	- fastapi return kembali data yang sudah clean ke flask untuk disubmit ke DB.
+     PJ :
+     KOMUNIKASI GUI : NADHIF
+
+2. (train model via GUI) fetching data dari DB lalu split train/test lalu membuat proses komputasi training data untuk update model.
+    flow gambaran :
+	- Admin menekan tombol untuk melatih model *contoh aja : melalui route("/train")*.
+	- Backend (flask) request data dari database.
+	- Backend (flask) melakukan split train/test.
+	- Backend (flask) ngirim data ke fastapi dengan URL_API, lalu fastapi eksekusi proses train model *waktunya pasti bakal lama*.
+	- fastapi return ke backend (flask) agar flask melakukan save model yang sudah ditrain *pr nya disini harus paham penyimpanan direktori file model buat disimpan*.
+     PJ :
+     KOMUNIKASI GUI : ARFI
+
+3. (predict/testing data via GUI) membuat proses komputasi testing/memprediksi data yang ada di DB melalui model yang sudah dibuat.
+    flow gambaran :
+	- Admin menekan tombol untuk predict *contoh aja : melalui route("/predict")*.
+	- Backend (flask) request data test dari DB.
+	- Backend (flask) mengirim data ke fastapi.
+	- fastapi memproses eksekusi data menggunakan model yang sudah dilatih untuk predict.
+	- fastapi mereturn data hasil predict kembali ke flask.
+	- Backend (flask) menerima hasil predict dan disimpan ke DB seperti mungkin tabel predict.
+     PJ : 
+     KOMUNIKASI GUI : SATRIA
+
+
+=======
+1. (cleansing data) membuat proses preprocessing inputan jawaban user pada saat tes disubmit ke DB "jawaban user sudah clean ketika masuk database"
+   flow gambaran :
+	- User submit jawaban.
+	- Jawaban user dikirim ke backend (Flask) dan backend (flask) mengirim ke fastapi dengan URL_API.
+	- fastapi melakukan preprocessing untuk cleansing data.
+	- fastapi return kembali data yang sudah clean ke flask untuk disubmit ke DB.
+     PJ :
+     KOMUNIKASI GUI : NADHIF
+
+2. (train model via GUI) fetching data dari DB lalu split train/test lalu membuat proses komputasi training data untuk update model.
+    flow gambaran :
+	- Admin menekan tombol untuk melatih model *contoh aja : melalui route("/train")*.
+	- Backend (flask) request data dari database.
+	- Backend (flask) melakukan split train/test.
+	- Backend (flask) ngirim data ke fastapi dengan URL_API, lalu fastapi eksekusi proses train model *waktunya pasti bakal lama*.
+	- fastapi return ke backend (flask) agar flask melakukan save model yang sudah ditrain *pr nya disini harus paham penyimpanan direktori file model buat disimpan*.
+     PJ :
+     KOMUNIKASI GUI : ARFI
+
+3. (predict/testing data via GUI) membuat proses komputasi testing/memprediksi data yang ada di DB melalui model yang sudah dibuat.
+    flow gambaran :
+	- Admin menekan tombol untuk predict *contoh aja : melalui route("/predict")*.
+	- Backend (flask) request data test dari DB.
+	- Backend (flask) mengirim data ke fastapi.
+	- fastapi memproses eksekusi data menggunakan model yang sudah dilatih untuk predict.
+	- fastapi mereturn data hasil predict kembali ke flask.
+	- Backend (flask) menerima hasil predict dan disimpan ke DB seperti mungkin tabel predict.
+     PJ : 
+     KOMUNIKASI GUI : SATRIA
+
+
+>>>>>>> 427468fc62302088f4f393087af55d2b28825910
+CATATAN : disini Flask sebagai jembatan antara GUI (laravel) dengan eksekusi engine (FastAPI), tugas flask disini buat request data, rapihin struktur data, menampung hasil eksekusi data buat diteruskan ke DB atau GUInya, FastAPI sebagai eksekusi dari proses komputasinya. silahkan pilih buat task yang mau dikerjain seharian full besok, *INGAT JANGAN NUNGGU GUI NYA EKSPERIMEN SENDIRI CONTOH BUAT GUI, SENDIRI EKSPERIMEN SENDIRI BIAR LEBIH YAKIN AMA TASKNYA MASING MASING, KALO UDAH BERHASIL OBROLIN KE TIM GUI BERHUBUNG ADA 3 TASK TIM GUI ADA 3 JUGA JADI MENDING OBROLIN KE MASING MASING ORANG YANG UDAH GW CANTUMIN NAMANYA KOMUNIKASI GUINYA* thx u :)

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Predictor</title>
+</head>
+<body>
+    <h1>Model Predictor</h1>
+    
+    <form id="predictionForm">
+        <!-- Membuat Form untuk 9 Input dengan Perulangan -->
+        <!-- Dimulai dari 1 sampai 9 -->
+
+        <!-- Perulangan untuk Membuat Input -->
+        <!-- Anda dapat menyesuaikan ID dan atribut lainnya sesuai kebutuhan -->
+        <!-- Dimensi dan Jawaban diberi class "input" untuk mempermudah seleksi menggunakan JavaScript -->
+
+        <!-- Gunakan class "input" untuk mengumpulkan semua input dengan JavaScript -->
+
+        <!-- Pada contoh ini, kita memasukkan placeholder untuk ID, Dimensi, dan Jawaban -->
+        <!-- Placeholder ini dapat dihapus jika tidak diperlukan -->
+
+        <!-- Input 1-9 -->
+        <div id="inputContainer"></div>
+
+        <button type="button" onclick="predict()">Predict</button>
+    </form>
+
+    <h2>Hasil Prediksi:</h2>
+    <div id="result"></div>
+
+    <script>
+        // Menggunakan JavaScript untuk Membuat Input secara Dinamis
+        const inputContainer = document.getElementById('inputContainer');
+        for (let i = 1; i <= 9; i++) {
+            const inputDiv = document.createElement('div');
+            inputDiv.innerHTML = `
+                <label for="id${i}">ID ${i}:</label>
+                <input type="text" id="id${i}" name="id${i}" class="input" placeholder="ID ${i}">
+                <label for="dimensi${i}">Dimensi ${i}:</label>
+                <input type="text" id="dimensi${i}" name="dimensi${i}" class="input" placeholder="Dimensi ${i}">
+                <label for="jawaban${i}">Jawaban ${i}:</label>
+                <input type="text" id="jawaban${i}" name="jawaban${i}" class="input" placeholder="Jawaban ${i}">
+            `;
+            inputContainer.appendChild(inputDiv);
+        }
+
+        function predict() {
+            // Mengumpulkan nilai input dengan class "input"
+            const inputs = [];
+            for (let i = 1; i <= 9; i++) {
+                inputs.push({
+                    id: document.getElementById(`id${i}`).value.trim(),
+                    dimensi: document.getElementById(`dimensi${i}`).value.trim(),
+                    jawaban: document.getElementById(`jawaban${i}`).value.trim(),
+                });
+            }
+
+            // Mengirim permintaan prediksi ke API
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ batch: inputs }),
+            })
+            .then(response =>{
+                console.log(JSON.stringify({ batch: inputs })) 
+                response.json()})
+            .then(data => {
+                // Menampilkan hasil prediksi
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '';
+                data.forEach(result => {
+                    const resultItem = document.createElement('p');
+                    resultItem.textContent = `ID: ${result.id}, Level Kompetensi: ${result.label}`;
+                    resultDiv.appendChild(resultItem);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
