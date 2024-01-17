@@ -80,7 +80,7 @@ def train():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 #------------------------------------------------------------------------------------------------------------#
-## UPDATE DATA TRAINING DATABASE and CSV
+## UPDATE DATA TRAINING DATABASE and CSV asdasdas
 @app.route('/update-data-training', methods=['POST'])
 def update_data_training():
     try:
