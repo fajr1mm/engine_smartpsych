@@ -5,7 +5,6 @@ pydantic
 typing
 pandas
 datetime
-io
 google.cloud
 transformers
 flask_sqlalchemy
