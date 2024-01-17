@@ -11,3 +11,4 @@ flask_sqlalchemy
 nltk
 numpy
 scikit-learn
+gunicorn

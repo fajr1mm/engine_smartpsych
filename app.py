@@ -18,7 +18,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-API_URL = 'http://127.0.0.1:8001'
 # Create tables
 with app.app_context():
     db.create_all()
@@ -131,9 +130,9 @@ def update_data_training_csv():
 # if __name__ == '__main__':
 #     app.run(port=8080, debug=True)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
     
-port = int(os.environ.get("PORT", 8080))
-if __name__ == "main":
-    app.run(host="0.0.0.0", port=port)
+# port = int(os.environ.get("PORT", 8080))
+# if __name__ == "main":
+#     app.run(host="0.0.0.0", port=port)
