@@ -3,7 +3,6 @@ from preprocessing_function import clean_text
 from flask import jsonify
 from datetime import datetime
 import os
-import pickle
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from datasets import Dataset, DatasetDict, concatenate_datasets
