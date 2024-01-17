@@ -8,7 +8,6 @@ datetime
 google.cloud
 transformers
 flask_sqlalchemy
-tkinter
 nltk
 numpy
 scikit-learn
