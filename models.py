@@ -3,6 +3,7 @@ from datetime import datetime
 import random
 from head import db
 
+#models new
 class DataTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 

@@ -9,6 +9,7 @@ from io import StringIO
 import pandas as pd
 from sqlalchemy import Column, VARCHAR, Table, inspect, text
 
+#database new
 def get_latest_version_table_info():
     # get all table 
     inspector = inspect(db.engine)

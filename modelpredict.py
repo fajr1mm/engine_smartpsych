@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from typing import List
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
+#modelspredict new
 class InputItem(BaseModel):
     id: str
     dimensi: str
