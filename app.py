@@ -1,24 +1,20 @@
 from flask import Flask, request, jsonify, render_template
-import requests
-from models import db, DataTraining
-from database import save_to_database, fetch_selected_data, save_model_version
+from flask_sqlalchemy import SQLAlchemy
+from database import fetch_selected_data, save_model_version, merge_data_training, update_data_training
 from train_model import train_model, TrainItem
-from modelpredict import InputItem, PredictionItem, predictmodel
+from modelpredict import InputItem, predictmodel
 from preprocessing_function import clean_text
 from pydantic import BaseModel
 from typing import List, Optional
-from models import db, DataTraining
+from datetime import datetime
+import random
+import io
+import chardet
+from sqlalchemy.exc import IntegrityError
 import pandas as pd
-import os
+from head import app, db
 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/engine_smartpsych'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db.init_app(app)
-
-# Create tables
 with app.app_context():
     db.create_all()
 
@@ -81,58 +77,43 @@ def train():
         return jsonify({"error": str(e)}), 500
 #------------------------------------------------------------------------------------------------------------#
 ## UPDATE DATA TRAINING DATABASE and CSV asdasdas
-@app.route('/update-data-training', methods=['POST'])
-def update_data_training():
-    try:
-        data = request.get_json(force=True)
-        # Clean and process data
-        for item in data['batch']:
-            item['JAWABAN'] = clean_text(item['JAWABAN'])
-
-        for item in data['batch']:
-            item['RESPONSE'] = f"{item['DIMENSI']}; {item['JAWABAN']}"
-
-        processed_data = {
-            "batch": [
-                {k: v for k, v in item.items() if k not in ["DIMENSI", "JAWABAN"]} for item in data["batch"]
-            ]
-        }
-        # Save data to the database using the save_to_database function
-        return save_to_database(processed_data)
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
 @app.route('/update-data-training-csv', methods=['POST'])
 def update_data_training_csv():
-    try:
-        # Pastikan request memiliki file CSV
+    try:        
         if 'file' not in request.files:
             return jsonify({"error": "No CSV file provided"}), 400
-
+        
         file = request.files['file']
-        # Baca file CSV ke DataFrame
-        df = pd.read_csv(file)
+        file_bytes = file.read()
 
-        processed_data = {
-            "batch": [
-                {k: v for k, v in item.items() if k not in ["DIMENSI", "JAWABAN"]} for _, item in df.iterrows()
-            ]
-        }
+        result = chardet.detect(file_bytes)
+        encoding = result['encoding']
 
-        # Simpan data ke database
-        return save_to_database(processed_data)
+        df = pd.read_csv(io.StringIO(file_bytes.decode(encoding)))
+
+        if df.empty:
+            return jsonify({"error": "CSV file is empty"}), 400
+
+        # Pilihan merge atau update dari GUI
+        action = request.form.get('action', '')
+
+        # Tanggal saat ini untuk versi tabel baru
+        current_datetime = datetime.now()
+        current_date = current_datetime.strftime("%Y%m%d")
+        current_time = current_datetime.strftime("%H%M")
+        random_digits = str(random.randint(10, 99))
+        table_name = f"dt_v{current_date}{current_time}{random_digits}"
+
+        # Cek aksi yang dipilih
+        if action == 'merge':
+            return merge_data_training(df, table_name)
+        elif action == 'update':
+            return update_data_training(df, table_name)
+        else:
+            return jsonify({"error": "Invalid action"}), 400
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), 501
 #------------------------------------------------------------------------------------------------------------#
-
-# if __name__ == '__main__':
-#     app.run(port=8080, debug=True)
-
 if __name__ == '__main__':
     app.run(debug=True)
-    
-# port = int(os.environ.get("PORT", 8080))
-# if __name__ == "main":
-#     app.run(host="0.0.0.0", port=port)

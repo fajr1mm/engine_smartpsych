@@ -1,52 +1,104 @@
 
 from datetime import datetime
-from flask import jsonify
-from models import db, DataTraining, ModelVersi
 from io import StringIO
 import pandas as pd
+from sqlalchemy.exc import IntegrityError, NoSuchTableError
+from flask import jsonify
+from models import DataTraining, ModelVersi, db
+from io import StringIO
+import pandas as pd
+from sqlalchemy import Column, VARCHAR, Table, inspect, text
 
-def save_to_database(data):
+def get_latest_version_table_info():
+    # get all table 
+    inspector = inspect(db.engine)
+    all_tables_1 = inspector.get_table_names()
+
+    print("All Tables in Metadata:", all_tables_1)
+    all_tables = inspect(db.engine).get_table_names()
+
+    # get table with relevant name
+    relevant_tables = [table for table in all_tables if table.startswith("dt_v")]
+
+    # get latest table version
+    if relevant_tables:
+        latest_version_table_name = max(relevant_tables)
+        return get_table_info(latest_version_table_name)
+
+    return None
+
+def get_table_info(table_name):
+
+    if table_name:
+        # use inspector for get columns
+        inspector = inspect(db.engine)
+        columns = inspector.get_columns(table_name)
+        
+        # only columns
+        column_names = [column["name"] for column in columns]
+
+        return {"table_name": table_name, "columns": column_names}
+
+    return None
+
+def create_dynamic_columns(df, table_name):
     try:
-        for item in data['batch']:
-            current_time = datetime.now()
-            versi=f"DT_v{current_time.strftime('%d%m%Y')}"
-            response = item['RESPONSE']
-            level = item.get('LEVEL', 0)  # Assuming LEVEL is in the data
+        columns = df.columns
 
-            # Create a new data training entry with foreign key to the new version
-            new_data_training = DataTraining(versi=versi, response=response, level=level, created_at=current_time)
-            db.session.add(new_data_training)
+        # create new table
+        dynamic_columns = [Column(col.strip(), VARCHAR(255)) for col in columns]
+        dynamic_table = Table(table_name, db.metadata, *dynamic_columns, extend_existing=True)
 
-        # Commit the changes to the database
-        db.session.commit()
+        # Create the table in the database
+        dynamic_table.create(bind=db.engine, checkfirst=True)
+
+    except Exception as e:
+        raise e
+
+def merge_data_training(df, table_name):
+    try:
+        latest_version_table_info = get_latest_version_table_info()
+
+        print(latest_version_table_info['table_name'])
+        print(latest_version_table_info['columns'])
+        if not latest_version_table_info:
+            return jsonify({"error": "Merging data training failed, data training is empty. You should perform an update first."}), 400
+
+        # Check if the columns match
+        if set(df.columns) != set(latest_version_table_info['columns']):
+            return jsonify({"error": "Merging data training failed, data training is not synchronized. You should perform an update."}), 400
+
+        # Create a new table with dynamic columns
+        create_dynamic_columns(df, table_name)
+
+        # Merge the data and insert into the new table
+        merged_df = pd.concat([pd.read_sql_table(latest_version_table_info['table_name'], db.engine), df], ignore_index=True)
+        merged_df.to_sql(table_name, db.engine, if_exists='replace', index=False)
+
+        return jsonify({"message": "Data training merged successfully"}), 200
+
+    except IntegrityError as e:
+        db.session.rollback()
+        return jsonify({"error": "Merging data training failed. Integrity error."}), 500
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 502
+
+def update_data_training(df, table_name):
+    try:
+        # create table
+        create_dynamic_columns(df, table_name)
+
+        # Assign struktur tabel ke objek DataFrame
+        df.to_sql(table_name, db.engine, if_exists='replace', index=False)
 
         return jsonify({"message": "Data training updated successfully"}), 200
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
-def save_csv_to_database(csv_content):
-    try:
-        # Baca CSV dari string
-        df = pd.read_csv(StringIO(csv_content))
-
-        for _, item in df.iterrows():
-            current_time = datetime.now()
-            versi = f"DT_v{current_time.strftime('%d%m%Y')}"
-            response = item['RESPONSE']
-            level = item.get('LEVEL', 0)  # Assuming LEVEL is in the data
-
-            # Create a new data training entry with foreign key to the new version
-            new_data_training = DataTraining(versi=versi, response=response, level=level, created_at=current_time)
-            db.session.add(new_data_training)
-
-        # Commit the changes to the database
-        db.session.commit()
-
-        return jsonify({"message": "Data training updated successfully"}), 200
+    except NoSuchTableError:
+        return jsonify({"error": f"Table {table_name} does not exist"}), 500
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), 503
     
 def fetch_selected_data(version):
     if version:
