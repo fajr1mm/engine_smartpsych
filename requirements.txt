@@ -13,3 +13,4 @@ google-cloud-storage==1.42.3
 Werkzeug==2.0.1  # Ensure compatibility with Flask 2.0.1
 scikit-learn==0.24.2  # Added scikit-learn
 pymysql==1.0.2  # Use pymysql instead of mysqlclient
+sentencepiece
