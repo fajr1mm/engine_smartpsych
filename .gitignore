@@ -2,3 +2,4 @@ t5_model.pkl
 t5_tokenizer.pkl
 ./.ipynb_checkpoints
 ./model
+./spaenv
